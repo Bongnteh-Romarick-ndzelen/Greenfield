@@ -173,7 +173,6 @@ body {
 }
 
 .contact .php-email-form button[type=submit] {
-  background: rgba(0,131,116,0.9);
   border: 0;
   padding: 14px 45px;
   color: #fff;
@@ -182,7 +181,7 @@ body {
 }
 
 .contact .php-email-form button[type=submit]:hover {
-  background: #07530D;
+  background: #3B6CD4;
 }
 
 @keyframes animate-loading {
@@ -324,13 +323,12 @@ body {
   z-index: 1500; /* Make sure it does not overlap */
   border: none; /* Remove borders */
   outline: none; /* Remove outline */
-  background:#F5E508;/* Set a background color */
-  color: black; /* Text color */
+  background:#20241e;/* Set a background color */
+  color:#F5E508; /* Text color */
   cursor: pointer; /* Add a mouse pointer on hover */
   padding: 5px; /* Some padding */
   border-radius: 50%; /* Rounded corners */
-  font-size: 24px; /* Increase font size */
-  
+  font-size: 30px; /* Increase font size */
 }
 
 #myBtn:hover {

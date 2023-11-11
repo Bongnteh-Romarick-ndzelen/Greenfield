@@ -1,8 +1,5 @@
-/*--------------------------------------------------------------
-# Hero Section
---------------------------------------------------------------*/
 body {
-  background: #000000;
+    background:#000000;
 }
 
 .hero {
@@ -86,8 +83,7 @@ body {
 
 .section-header {
   text-align: center;
-  padding: 10px;
-  background: #3c9188;
+  padding-bottom: 10px;
 }
 
 .section-header h2 {
@@ -116,69 +112,6 @@ body {
   margin-bottom: 0;
   color: #F8F5F5;
 }
-
-/*--------------------------------------------------------------
-# Testimonial
---------------------------------------------------------------*/
-.team .member {
-  position: relative !important;
-  box-shadow: 0px 2px 15px rgba(0, 0, 0, 0.1) !important;
-  padding: 30px !important;
-  border-radius: 5px !important;
-  background: #d2d2d2 !important;
-  transition: 0.5s !important;
-  height: 100% !important;
-}
-
-.team .member .pic {
-  overflow: hidden;
-  
-  border-radius: 50%;
-}
-
-.team .member .pic img {
-  transition: ease-in-out 0.3s !important;
-}
-
-.team .member:hover {
-  transform: translateY(-10px);
-}
-
-.team .member .member-info {
-  padding-left: 30px;
-}
-
-.team .member h4 {
-  font-weight: 700;
-  margin-bottom: 5px;
-  font-size: 20px;
-  color: #37517e;
-}
-
-.team .member span {
-  display: block;
-  font-size: 15px;
-  padding-bottom: 10px;
-  position: relative;
-  font-weight: 500;
-}
-
-.team .member span::after {
-  content: "";
-  position: absolute;
-  display: block;
-  width: 50px;
-  height: 1px;
-  background: #cbd6e9;
-  bottom: 0;
-  left: 0;
-}
-
-.team .member p {
-  margin: 10px 0 0 0;
-  font-size: 14px;
-}
-
 /*--------------------------------------------------------------
 # Footer
 --------------------------------------------------------------*/
@@ -301,125 +234,20 @@ body {
   align-items:center;
   display: none; /* Hidden by default */
   position: fixed; /* Fixed/sticky position */
-  bottom: 40px ; /* Place the button at the bottom of the page */
-  right: 10px; /* Place the button 30px from the right */
+  bottom: 100px ; /* Place the button at the bottom of the page */
+  right: 15px; /* Place the button 30px from the right */
   width:40px;
   z-index: 1500; /* Make sure it does not overlap */
   border: none; /* Remove borders */
   outline: none; /* Remove outline */
-  background: #020406;/* Set a background color */
-  color: #f5e508; /* Text color */
+  background:#5a5f65;/* Set a background color */
+  color:#F5E508; /* Text color */
   cursor: pointer; /* Add a mouse pointer on hover */
   padding: 5px; /* Some padding */
   border-radius: 50%; /* Rounded corners */
-  font-size: 35px; /* Increase font size */
-
+  font-size: 30px; /* Increase font size */
 }
 
 #myBtn:hover {
-  background-color: #1E1F1D !important; /* Add a dark-grey background on hover */
-}
-
-/*live chatt*/
-.open-button {
-  background-color: #ba14be;
-  color: white;
-  padding: 1px;
-  border: none;
-  cursor: pointer;
-  position: fixed;
-  bottom: 120px;
-  right: 10px;
-  border-radius:10px;
-  margin-bottom:50px;
-  z-index:1500;
-}
-
-/* The popup chat - hidden by default */
-.chat-popup {
-  display: none;
-  position: fixed;
-  bottom: 0;
-  right: 15px;
-}
-
-/* Add styles to the form container */
-.form-container {
-  max-width: 350px;
-  padding: 10px 15px;
-  background-color: #0C1B18;
-  border-radius:10px;
-  z-index:1000;
-}
-
-/* Full-width textarea */
-.form-container textarea {
-  width: 100%;
-  padding: 10px;
-  margin: 2px 0 22px 0;
-  background: #C8EAE6;
-  resize: none;
-  color:black important;
-  border-radius:10px;
-}
-
-/* When the textarea gets focus, do something */
-.form-container textarea:focus {
-  background-color: #ddd important;
-  outline: none;
-  border-radius:10px;
-}
-
-.form-container .textinput {
-  background-color:  #C8E2DF;
-  padding: 6px 20px;
-  border-radius:5px;
-  color:black important;
-  width: 100%;
-  margin-bottom:10px;
-}
-.form-container .textinput:hover,.form-container .textarea:hover  {
-  background-color:  #C8E2DF;
-  padding: 6px 20px;
-  border: solid 2px #68abdd;
-  outline:none;
-}
-.form-container .name:focus {
-  background-color: #ddd Important;
-  outline: none;
-  border-radius:5px;
-}
-/* Set a style for the submit/send button */
-.form-container .btn {
-  background-color: #1f1483;
-  color: white;
-  padding: 7px 20px;
-  border: none;
-  border-radius:10px;
-  cursor: pointer;
-  width: 100%;
-  margin-bottom:5px;
- 
-}
-
-/* Add a red background color to the cancel button */
-.form-container .cancel {
-  background-color: #ff2f2f;
-  border-radius:5px;
-}
-
-/* Add some hover effects to buttons */
-.form-container .btn:hover, .open-button:hover {
-  opacity: 1;
-}
-/*Use this class when you want your content to be hidden*/
-
-/*material icon*/
-
-.material-symbols-outlined {
-  font-variation-settings:
-  'FILL' 0,
-  'wght' 1000,
-  'GRAD' 0,
-  'opsz' 30
+  background-color: #67A806 !important; /* Add a dark-grey background on hover */
 }

@@ -1,5 +1,5 @@
 from django import forms
-from .models import Contact, LiveChat
+from .models import Contact, LiveChat, Comment
 from django.core.validators import RegexValidator
 
 #Every letter to lowercase
@@ -69,10 +69,35 @@ class LiveChatForm(forms.ModelForm):
         widget=forms.TextInput(attrs={'placeholder': 'Enter your phone Number...'})
     )
     message = forms.CharField(
-        label='message',min_length=10, max_length=1000,
-        widget=forms.Textarea(attrs={'placeholder': 'Type a Message', 'rows':3}),
-        required=False
+        label='Comment',min_length=20, max_length=1000,
+        widget=forms.Textarea(attrs={'placeholder': 'Type a Message', 'rows':4})
     )
     class Meta:
         model = LiveChat
         fields = "__all__"
+
+class CommentForm(forms.ModelForm):
+    name = forms.CharField(
+        label='Name',min_length=5,max_length=200,
+        validators=[RegexValidator(r'^[a-zA-Z\s]*$',
+        message = "Only letters are allowed")],
+        widget=forms.TextInput(attrs={'placeholder': 'Enter your name...'}),
+        required=True
+    )
+    email = forms.CharField(
+        label='Email Address',min_length=10,max_length=50,
+        validators=[RegexValidator(r'^[a-zA-Z0-9.+_-]+@[a-zA-Z0-9._-]+\.[a-zA-Z]+$',
+        message = "Put a valid email address"
+        )],
+        widget=forms.TextInput(attrs={'placeholder': 'Enter your Email Address...'}),
+        required=False
+    )
+    Comment = forms.CharField(
+        label='Comment',min_length=10, max_length=1000,
+        widget=forms.Textarea(attrs={'placeholder': 'Type a comment', 'rows':5}),
+        required=True
+    )
+
+    class Meta:
+        model = Comment
+        fields = ['name', 'email', 'comment']

@@ -1,4 +1,5 @@
 from django.db import models
+from django.core.validators import FileExtensionValidator
 
 # Create your models here.
 
@@ -23,11 +24,11 @@ class LiveChat(models.Model):
         return self.name
 
 class BlogPost(models.Model):
-    image = models.ImageField(upload_to="Blog-Images")
+    image = models.ImageField(upload_to="Blog-Images", validators=[FileExtensionValidator(['jpg','png'])])
     title = models.CharField(max_length=100)
     content = models.TextField(null=True)
     author = models.CharField(max_length=100)
-    author_img =  models.ImageField(upload_to="Authors_images")
+    author_img =  models.ImageField(upload_to="Authors_images", validators=[FileExtensionValidator(['jpg','png'])])
     date = models.DateField(auto_now_add=True)
 
     class meta:
@@ -35,3 +36,33 @@ class BlogPost(models.Model):
 
     def __str__(self):
         return self.title
+#Blog comment
+class Comment(models.Model):
+    name = models.CharField(max_length=50)
+    email = models.EmailField()
+    comment = models.TextField()
+    send_date = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return self.name
+
+#Gallery
+class Gallery(models.Model):
+    title = models.CharField(max_length=100)
+    gallery_image= models.ImageField(upload_to='Gallery_images', validators=[FileExtensionValidator(['jpg','png'])])
+    content = models.TextField()
+    date_posted = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return self.title
+
+#team members
+class Team(models.Model):
+    name = models.CharField(max_length=50)
+    member_img = models.ImageField(upload_to='Team_images', validators=[FileExtensionValidator(['jpg','png'])])
+    description = models.TextField()
+
+    def __str__(self):
+        return self.name
+
+

@@ -1,14 +1,15 @@
 from django.shortcuts import render, redirect
-from .forms import ContactForm, LiveChatForm
+from .forms import ContactForm, LiveChatForm, CommentForm
+from django.core.paginator import Paginator
 from django.contrib import messages
-from .models import BlogPost
+from .models import BlogPost, Comment, Gallery
+
 
 # Create your views here.
 
 
 #home page
 def index(request):
-    BlogPosts = BlogPost.objects.all()
     forms = LiveChatForm(request.POST)
     if forms.is_valid():
         forms.save()
@@ -16,7 +17,6 @@ def index(request):
         return redirect('/')
     context = {
         'forms':forms,
-        'BlogPosts':BlogPosts,
     }
     return render(request, 'index.html', context)
 
@@ -36,5 +36,34 @@ def contact(request):
 
 #Blog page
 def blog(request):
-    return render(request, 'blog.html')
+    BlogPosts = BlogPost.objects.all()[::-1]
+    paginator = Paginator(BlogPosts, 3)
+
+    page_number = request.GET.get('page')
+    page_obj = paginator.get_page(page_number)
+
+    coment = Comment.objects.all()[::-1] #method to reverse all the comments
+    form1 = CommentForm(request.POST)
+    if form1.is_valid():
+        form1.save()
+        return redirect('blog#comment')
+    context = {
+        'page_obj': page_obj,
+        'character_limit': 200,
+        'form1': form1,
+        'coment':coment,
+    }
+    return render(request, 'blog.html', context)
+
+#Gallery section
+def gallery(request):
+    gallery = Gallery.objects.all()[::-1]
+    paginator = Paginator(gallery, 8)
+
+    page_number = request.GET.get('page')
+    page_obj = paginator.get_page(page_number)
+    context = {
+        'page_obj': page_obj
+    }
+    return render(request, 'gallery.html', context)
 
