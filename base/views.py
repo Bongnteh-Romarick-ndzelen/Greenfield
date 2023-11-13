@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect
 from .forms import ContactForm, LiveChatForm, CommentForm
 from django.core.paginator import Paginator
 from django.contrib import messages
-from .models import BlogPost, Comment, Gallery
+from .models import BlogPost, Comment, Gallery, Team
 
 
 # Create your views here.
@@ -10,13 +10,18 @@ from .models import BlogPost, Comment, Gallery
 
 #home page
 def index(request):
-    forms = LiveChatForm(request.POST)
-    if forms.is_valid():
-        forms.save()
-        messages.info(request, " Thank you! We will get back to you shortly!")
-        return redirect('/')
+    team = Team.objects.all()
+    paginator = Paginator(team, 4)
+
+    page_number = request.GET.get('page')
+    page_obj = paginator.get_page(page_number)
+    #forms = LiveChatForm(request.POST)
+    #if forms.is_valid():
+        #forms.save()
+        #messages.info(request, " Thank you! We will get back to you shortly!")
+        #return redirect('/')
     context = {
-        'forms':forms,
+        'page_obj':page_obj,
     }
     return render(request, 'index.html', context)
 
@@ -46,7 +51,8 @@ def blog(request):
     form1 = CommentForm(request.POST)
     if form1.is_valid():
         form1.save()
-        return redirect('blog#comment')
+        messages.info(request, " Thank you! Comment submitted. It's under review by the Administrator!")
+        return redirect('/blog#comment')
     context = {
         'page_obj': page_obj,
         'character_limit': 200,

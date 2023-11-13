@@ -1,11 +1,11 @@
 body {
-    background:#000000;
+  background:linear-gradient(to right, #01151A,#010312,#010715,#071C21,#0D0912,#022015);
 }
 
 .hero {
   width: 100%;
   position: relative;
-  background: #105861;
+  background: #04343B9E;
   padding: 60px 0 0 0;
 }
 

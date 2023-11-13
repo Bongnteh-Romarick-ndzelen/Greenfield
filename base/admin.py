@@ -1,5 +1,6 @@
 from django.contrib import admin
 from .models import Contact, LiveChat, BlogPost, Comment, Gallery, Team
+from django.utils.html import format_html
 
 # Register your models here.
 
@@ -21,10 +22,32 @@ class BlogPostAdmin(admin.ModelAdmin):
     list_per_page = 8
     
 class CommentAdmin(admin.ModelAdmin):
-    list_display = ['name', 'comment', 'email', 'send_date']
-    search_fields = ['name']
+    list_filter = ['situations']
+    list_display = ['name', 'comment', 'email', 'send_date','status', '_']
+    search_fields = ['name','situations']
     #readonly_fields = ['name', 'comment', 'email', 'send_date']
     list_per_page = 10
+    
+    #Function to change icons for situations
+    def _(self, obj):
+        if obj.situations == 'Approved':
+            return True
+        elif obj.situations == 'Pending':
+            return None
+        else:
+            return False
+    _.boolean = True
+    
+    #Function to color the text
+    def status(self, obj):
+        if obj.situations == 'Approved':
+            color = 'green'
+        elif obj.situations == 'Pending':
+            color = '#fea95e'
+        else:
+            color = '#ff0000'
+        return format_html("<strong><p style='color:{}'>{}</p></strong>".format(color, obj.situations))
+    status.allow_tags = True
 
 class GalleryAdmin(admin.ModelAdmin):
     list_display = ['title', 'content', 'gallery_image', 'date_posted']
@@ -32,8 +55,8 @@ class GalleryAdmin(admin.ModelAdmin):
     list_per_page = 10
 
 class TeamAdmin(admin.ModelAdmin):
-    list_display = ['name','member_img','description']
-    search_fields = ['name','member_img','description']
+    list_display = ['name','member_img','position','description']
+    search_fields = ['name','member_img', 'position','description']
     list_per_page = 5
 
 admin.site.register(Contact, ContactAdmin)

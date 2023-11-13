@@ -2,7 +2,7 @@
 # Contact Section
 --------------------------------------------------------------*/
 body {
-  background: #000000;
+  background:linear-gradient(to right, #01151A,#010312,#010715,#071C21,#0D0912,#022015);
 }
 .section-header {
   text-align: center;
@@ -35,7 +35,7 @@ body {
   color: #030303;
 }
 .contact .info-container {
-  background-color: #03544A;
+  background-color: #042320;
   height: 100%;
   padding: 20px;
   border-radius: 10px 0 0 10px;
@@ -44,11 +44,11 @@ body {
 
 .contact .info-item {
   width: 100%;
-  background-color: #009282;
+  background-color: #1A4540;
   margin-bottom: 20px;
   padding: 20px;
   border-radius: 10px;
-  color: #fff;
+  color: #cecece;
 }
 
 .contact .info-item:last-child {
@@ -154,6 +154,7 @@ body {
 .contact .php-email-form input[type='number'],
 .contact .php-email-form textarea {
   padding: 21px 15px;
+  background: #bdeae9;
 }
 
 .contact .php-email-form input[type="text"]:focus,

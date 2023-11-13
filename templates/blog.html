@@ -22,7 +22,7 @@
             href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     </head>
 
-    <body style="background:#000000;">
+    <body>
         <!--section navbar-->
         <section>
             <nav class="navbar navbar-expand-lg navbar-dark py-1 pl-3 fixed-top" style="background-color: #054954;">
@@ -32,7 +32,7 @@
                         aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"></span>
                     </button>
-                    <a class="navbar-brand" href="/">GFBNP-Buea</a>
+                    <a class="navbar-brand" href="/">GIBNP-Buea</a>
                     <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
                         <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
                             <li class="nav-item">
@@ -64,7 +64,7 @@
                 <div class="container position-relative">
                     <div class="row d-flex justify-content-center">
                         <div class="col-lg-6 text-center rounded p-4" style="background:rgba(2, 48, 45, 0.868);">
-                            <h2>Recent Blogs</h2>
+                            <h2 class="text-white">Recent Blogs</h2>
                             <p style="color:rgb(192, 192, 176);">Odio et unde deleniti. Deserunt numquam exercitationem.
                                 Officiis quo odio sint voluptas consequatur ut a odio voluptatem. Sit dolorum debitis
                                 veritatis natus dolores. Quasi ratione sint. Sit quaerat ipsum dolorem.</p>
@@ -72,27 +72,27 @@
                     </div>
                 </div>
             </div>
-            <nav>
-                <div class="container">
+            <nav style="background-color: #0A0C0B;">
+                <div class="container"">
                     <ol>
-                        <li><a href="/">Home</a></li>
-                        <li>Blog</li>
+                        <li><a class="text-white" href="/">Home</a></li>
+                        <li class="text-white font-weight-bold">Blog</li>
                     </ol>
                 </div>
             </nav>
         </div><!-- End Breadcrumbs -->
         <!--Block item-->
         <div class="container">
-            <div class="row justify-content-center">
+            <div class="row justify-content-center border">
                 {% for post in page_obj %}
-                <div class="col-md-4 col-lg-4 bg-dark my-2">
-                    <div class="justify-content-center my-2 py-3 card-body bg-dark text-white border mx-1">
+                <div class="col-md-4 col-lg-4 bg-dark py-2">
+                    <div class="justify-content-center my-2 py-3 card-body text-white mx-1" style="background:linear-gradient(to right,#01140522,#0111142A,#01111449,#01111493);">
                         <img src="{{post.image.url}}" class="rounded" width="300" height="300" alt="">
                         <h5 class="mt-3">{{post.title}}</h5>
-                        <i>{{post.content|slice:":200"}}{% if post.content|length > 200 %}...{% endif %}</i>
+                        <i style="color: #B4D4C8;">{{post.content|slice:":200"}}{% if post.content|length > 200 %}...{% endif %}</i>
                         <!--center><p><button type="button" class="btn btn-primary mt-2 justify-content-center read-more">Read more</button></p></!--center-->
                         <div class="d-flex mt-3">
-                            <img src="{{post.author_img.url}}" class="mr-2" width="65" height="65" style="border-radius:50%" alt="blog author">
+                            <img src="{{post.author_img.url}}" class="mr-2" width="50" height="50" style="border-radius:50%" alt="blog author">
                             <p class="text-info"><strong>@{{post.author}}</strong><br>
                             <strong>{{post.date}}</strong>
                             </p>
@@ -125,29 +125,16 @@
         <section>
             <div class="container my-4">
                 <!--List of comments-->
-                <div class="row my-4 mx-3" id="comment">
-                    <div class="col-md-6 mx-1 shadow p-2 card text-white" style="background: #1a4a43;">
+                <div class="row my-4 mx-auto py-3 px-2"  style="background:linear-gradient(to right,#0C311522,#08191C58,#0B20236E,#02171A93);">
+                    <div class="col-md-8 p-2 text-white">
                         <div>
                             <h5 class="text-white text-center"><i>Recent Comments</i></h5>
                             {% for comments in coment %}
-                            <h5 class="mx-3 text-info">{{comments.name}}</h5>
-                            <p class="mx-3"><i>{{comments.comment}}</i><br>
-                                <strong class="text-info text-bold" style="font-size:1rem;">{{comments.send_date}}</strong>
+                            <h5 class="mx-3 text-info" style="font-size:1rem;">{{comments.name}}</h5>
+                            <p class="mx-3" style="font-size:1rem;"><i>{{comments.comment}}</i><br>
+                                <strong class="text-info">{{comments.send_date}}</strong>
                             </p>
                             {% endfor %}
-                            <p class="mx-3"></p>
-                            <h5 class="mx-3 text-info">James Smith</h5>
-                            <p class="mx-3"><i>Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium, fugiat! Lorem ipsum dolor sit amet consectetur.</i><br>
-                                <strong class="text-info text-bold" style="font-size:1rem;">12-06-2023</strong>
-                            </p>
-                            <h5 class="mx-3 text-info">Benard Adam</h5>
-                            <p class="mx-3"><i>Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium, fugiat! Lorem ipsum dolor sit amet consectetur adipisicing elit. Excepturi, dolor?</i><br>
-                                <strong class="text-info text-bold" style="font-size:1rem;">12-06-2023</strong>
-                            </p>
-                            <h5 class="mx-3 text-info">Bongnteh Romarick</h5>
-                            <p class="mx-3"><i>Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium, fugiat! Lorem ipsum dolor sit amet consectetur adipisicing elit. Excepturi, dolor?</i><br>
-                                <strong class="text-info text-bold" style="font-size:1rem;">12-06-2023</strong>
-                            </p>
                         </div>
                         <center>
                             <div class="justify-content-center mb-4">
@@ -156,21 +143,26 @@
                         </center>
                     </div>
                 <!-- comment form-->
-                <div class="col-md-5 mx-1 shadow py-2 pl-4 text-white" style="background: #000000;">
-                    <h4 class="text-white text-center">
-                        Drop us a comment
-                    </h4>
+                <div class="col-md-4 py-auto pl-3 text-white border" id="comment">
+                    <h4 class="text-white text-center">Drop us a comment</h4>
                     <p class="mx-3 text-white"><i>You're name and email will save next time you comment. We won't show your email address to the public. Your information is secured. The fields mark * are required!</i></p>
-                    <form action="" class="mx-3" method="post">
+                    <!--Messages from backend if commented successfully-->
+                    {% if messages %}
+                    <div class="alert alert-success alert-dismissible fade show" role="alert">
+                        {% for message in messages %}
+                        <p{% if message.tags %} class="rounded" style="color:#0f8686; font-weight:bold; font-size:.9rem;"{% endif %}><i>{{ message }}</i></p>
+                        {% endfor %}
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    {% endif %}
+                    <form action="" class="ml-3" method="post">
                         {% csrf_token %}
                         {{form1.name|as_crispy_field}}
                         {{form1.email|as_crispy_field}}
                         {{form1.comment|as_crispy_field}}
-
-                        <!--input type="text" name="name" id="name" class="form-control my-1 textinput" placeholder="Enter Your Name..">
-                        <input type="email" name="email" id="email" class="form-control my-1 textinput" placeholder="Enter Your Email..">
-                        <textarea-- name="comment" id="comment" cols="" rows="5" class="form-control my-1 textinput" placeholder="Type a Comment..."></textarea-->
-                        <input type="submit" value="Comment" class="btn btn-outline-primary mt-2">
+                        <input type="submit" value="Comment" class="btn btn-primary btn-block mt-2">
                     </form>
                 </div>
                 </div>
@@ -178,22 +170,16 @@
         </section>
 
         <!--Back to top button-->
-        <!--Back to top button-->
-    <button
-        onclick="topFunction()"
-        id="myBtn"
-        title="Go to top"
-        class="justify-content-center text-center"
-        >
-        <span class="material-symbols-outlined">
-        keyboard_double_arrow_up
-        </span>
-        <!--i class="fa-solid fa-angles-up"></i-->
-    </button>
+        <button
+            onclick="topFunction()"
+            id="myBtn"
+            title="Go to top"
+            class="justify-content-center text-center">
+            <span class="material-symbols-outlined">keyboard_double_arrow_up</span>
+        </button>
 
         <!-- ======= Footer ======= -->
         <footer id="footer" class="footer">
-
             <div class="container">
                 <div class="row gy-4">
                     <div class="col-lg-5 footer-info pl-4">
@@ -210,7 +196,7 @@
                             <a href="#" class="linkedin"><i class="bi bi-linkedin"><img src="{% static 'images/social/lik.jpg' %}" width='40' height="40" style="border-radius:50%;" alt=""></i></a>
                         </div>
                     </div>
-
+                    <!--Useful links-->
                     <div class="col-lg-4 my-3 justify-content-start text-start">
                         <h4 class="text-start pl-3">Useful Links</h4>
                         <ul class="text-start justify-content-start align-items-center" style="list-style-type: none;">
@@ -222,7 +208,7 @@
                             <li><a class="text-white" href="/contact">Contact Us</a></li>
                         </ul>
                     </div>
-
+                    <!--Contact information-->
                     <div class="col-lg-3 footer-contact text-start text-md-start pl-5">
                         <h4>Contact Us</h4>
                         <p>
@@ -233,9 +219,7 @@
                             <strong>Email:</strong> info@example.com<br>
                             <a class='text-white' href="/contact">Message Us</a><br>
                         </p>
-
                     </div>
-
                 </div>
             </div>
 
@@ -245,7 +229,6 @@
                         href="https://bongnteh-romarick-ndzelen/Personal_site/github.io/">Here</a>
                 </div>
             </div>
-
         </footer><!-- End Footer -->
         <!-- End Footer -->
 
@@ -265,5 +248,4 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
         <script src="{% static 'js/script.js' %}"></script>
     </body>
-
 </html>
